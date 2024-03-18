@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <!-- Maven POM의 버전 -->
+  <modelVersion>4.0.0</modelVersion>
+
+  <!-- 프로젝트 정보 -->
+  <groupId>com.kh</groupId> <!-- 조직을 식별할 수 있는 그룹id. -->
+  <artifactId>01_Mybatis</artifactId> <!-- 결과물 패키징 할 때의 id. 그룹안에서 중복되면 안된다. -->
+  <version>0.0.1-SNAPSHOT</version><!-- 버전. 이건 맘대로 정하면 됨. 예시 : 1.0.1 -->
+	
+  <!-- 프로젝트 이름 -->
+  <name>01_Mybatis</name>
+  <!-- FIXME change it to the project's website -->
+  <url>http://www.example.com</url> <!-- 프로젝트 url. 생략 가능 -->
+
+  <!-- 패키징 방식을 지정하는 속성. 기본이 jar(프로그램을 배포할때 쓰는 압축파일 형태) -->
+  <packaging>jar</packaging> 
+
+  <!-- 프로젝트 속성 설정(Java). 기본으로 1.7을 타겟으로 잡음. 그래서 11로 바꿔줘야함(필요한 버전에 맞게 변경) -->
+  <!-- 저장 후 마우스 우클릭 > MAVEN > Update Project를 실행해야 제대로 동작됨 -->
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.source>11</maven.compiler.source><!-- 기본 1.7 버전 -->
+    <maven.compiler.target>11</maven.compiler.target><!-- 기본 1.7 버전 -->
+  </properties>
+
+  <!-- 라이브러리 설정. 원하는 라이브러리 버전을 적어놓으면 알아서 다운받아짐. -->
+  <!-- https://mvnrepository.com/ -->
+  <!-- 처음에 로컬에 dependency를 이용하여 다운받아놓고, 그대로 파일 복사해서 다른 폴더에도 사용함. -->
+  <dependencies>
+  <!-- DB 관련 라이브러리 -->
+	<dependency>
+	    <groupId>com.oracle.database.jdbc</groupId>
+	    <artifactId>ojdbc10</artifactId>
+	    <version>19.21.0.0</version>
+	</dependency>
+	
+	<dependency>
+	    <groupId>org.mybatis</groupId>
+	    <artifactId>mybatis</artifactId>
+	    <version>3.5.15</version>
+	</dependency>
+	
+  	<!-- lombok 라이브러리 -->
+	<dependency>
+	    <groupId>org.projectlombok</groupId>
+	    <artifactId>lombok</artifactId>
+	    <version>1.18.30</version>
+	    <scope>provided</scope>
+	</dependency>
+	  	
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.11</version>
+      <scope>test</scope>
+    </dependency>
+    
+    <!-- 로그 관련 라이브러리 -->
+	<dependency>
+	    <groupId>org.apache.logging.log4j</groupId>
+	    <artifactId>log4j-slf4j-impl</artifactId>
+	    <version>2.22.1</version>
+	</dependency>
+    
+  
+    <!-- 테스트 관련 라이브러리 (ttd) -->
+   <dependency>
+       <groupId>org.junit.jupiter</groupId>
+       <artifactId>junit-jupiter-api</artifactId>
+       <version>5.10.1</version>
+       <scope>test</scope>
+   </dependency>
+   
+   <dependency>
+       <groupId>org.junit.jupiter</groupId>
+       <artifactId>junit-jupiter-params</artifactId>
+       <version>5.10.1</version>
+       <scope>test</scope>
+   </dependency>
+      
+   <dependency>
+       <groupId>org.assertj</groupId>
+       <artifactId>assertj-core</artifactId>
+       <version>3.25.1</version>
+       <scope>test</scope>
+   </dependency>
+  </dependencies>
+   
+
+  <!-- 프로젝트 빌드에 대한 설정 -->
+  <build>
+    <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
+      <plugins>
+        <!-- clean lifecycle, see https://maven.apache.org/ref/current/maven-core/lifecycles.html#clean_Lifecycle -->
+        <plugin>
+          <artifactId>maven-clean-plugin</artifactId>
+          <version>3.1.0</version>
+        </plugin>
+        <!-- default lifecycle, jar packaging: see https://maven.apache.org/ref/current/maven-core/default-bindings.html#Plugin_bindings_for_jar_packaging -->
+        <plugin>
+          <artifactId>maven-resources-plugin</artifactId>
+          <version>3.0.2</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <version>3.8.0</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-surefire-plugin</artifactId>
+          <version>2.22.1</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-jar-plugin</artifactId>
+          <version>3.0.2</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-install-plugin</artifactId>
+          <version>2.5.2</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-deploy-plugin</artifactId>
+          <version>2.8.2</version>
+        </plugin>
+        <!-- site lifecycle, see https://maven.apache.org/ref/current/maven-core/lifecycles.html#site_Lifecycle -->
+        <plugin>
+          <artifactId>maven-site-plugin</artifactId>
+          <version>3.7.1</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-project-info-reports-plugin</artifactId>
+          <version>3.0.0</version>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+  </build>
+</project>
